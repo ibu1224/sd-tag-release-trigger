@@ -1,5 +1,5 @@
 shared:
-  image: node12
+  image: node:12
 jobs:
   commit:
    requires: [ ~commit ]
