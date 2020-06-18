@@ -1,0 +1,36 @@
+shared:
+  image: node12
+jobs:
+  commit:
+   requires: [ ~commit ]
+   steps:
+     - echo "This is commit job"
+ 
+  release:
+    requires: [ ~release ]
+    steps:
+      - echo "This is release job"
+  release-filtering:
+    requires: [~release:v1]
+    steps:
+      - echo "This is release:filtering job"
+  release-regex:
+    requires: [~release:/./]
+    steps:
+      - echo "This is release:filtering job"
+
+  tag:
+    requires: [ ~tag ]
+    steps:
+      - echo "This is tag job"
+
+  tag-regex:
+    requires: [ ~tag:/^v1\.*/ ]
+    steps:
+      - echo "This is tag regex job"
+
+  tag-filtering:
+    requires: [ ~tag:tagtest ]
+    steps:
+      - echo "This is tag filtering job"
+
